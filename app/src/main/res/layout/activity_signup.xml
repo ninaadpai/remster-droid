@@ -35,19 +35,50 @@
         android:layout_marginTop="10dp" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/firstNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="15"
+        android:inputType="textCapSentences|text"
+        android:background="@drawable/landing_edittext_background"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
+        android:hint="@string/first_name_hint"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textSize="10sp"/>
+
+    <EditText
+        android:id="@+id/lastNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:inputType="textCapSentences|text"
+        android:layout_marginTop="10dp"
+        android:hint="@string/last_name_hint"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textSize="10sp"
+        android:background="@drawable/landing_edittext_background"
+        android:layout_below="@+id/firstNameEditText"
+        android:layout_alignLeft="@+id/firstNameEditText"
+        android:layout_alignStart="@+id/firstNameEditText" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:ems="15"
         android:inputType="textEmailAddress"
         android:background="@drawable/landing_edittext_background"
         android:hint="@string/email_hint"
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/black"
-        android:textSize="10sp"/>
+        android:textSize="10sp"
+        android:layout_below="@+id/lastNameEditText"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -66,11 +97,11 @@
         android:textSize="10sp"/>
 
     <Button
-        android:id="@+id/logInBtn"
+        android:id="@+id/signUpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordEditText"
-        android:text="@string/log_in"
+        android:text="@string/sign_up"
         android:layout_marginTop="10dp"
         android:textSize="10sp"
         android:height="10dp"
@@ -81,26 +112,15 @@
         android:layout_alignEnd="@+id/passwordEditText" />
 
     <TextView
-        android:id="@+id/logInTrouble"
+        android:id="@+id/logInHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logInBtn"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="10sp"
         android:textStyle="normal|bold"
         android:textColor="@color/colorPrimary"
-        android:text="@string/log_in_trouble" />
+        android:text="@string/log_in_hint"
+        android:layout_below="@+id/signUpBtn"
+        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/signUpHint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logInTrouble"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textSize="10sp"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorPrimary"
-        android:text="@string/sign_up_hint" />
 </RelativeLayout>

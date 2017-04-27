@@ -21,72 +21,86 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LandingActivity extends AppCompatActivity {
-    TextView appTitle,signUpHint, logInTrouble;
-    EditText emailEditText, passwordEditText;
-    Button logInBtn;
+public class SignupActivity extends AppCompatActivity {
+    TextView appTitle, logInHint;
+    EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText;
+    Button signUpBtn;
     Typeface commonTF;
-    FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing);
+        setContentView(R.layout.activity_signup);
         appTitle = (TextView)findViewById(R.id.appTitle);
-        logInTrouble = (TextView)findViewById(R.id.logInTrouble);
-        signUpHint = (TextView)findViewById(R.id.signUpHint);
-        emailEditText = (EditText)findViewById(R.id.emailEditText);
-        passwordEditText = (EditText)findViewById(R.id.passwordEditText);
+        logInHint = (TextView)findViewById(R.id.logInHint);
         commonTF = Typeface.createFromAsset(getAssets(),"fonts/Nunito-Regular.ttf");
-        logInBtn = (Button)findViewById(R.id.logInBtn);
-        appTitle.setTypeface(commonTF);
-        signUpHint.setTypeface(commonTF);
+        firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
+        lastNameEditText = (EditText) findViewById(R.id.lastNameEditText);
+        emailEditText = (EditText) findViewById(R.id.emailEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        signUpBtn = (Button)findViewById(R.id.signUpBtn);
+        firstNameEditText.setTypeface(commonTF);
+        lastNameEditText.setTypeface(commonTF);
         emailEditText.setTypeface(commonTF);
         passwordEditText.setTypeface(commonTF);
-        logInBtn.setTypeface(commonTF);
-        logInTrouble.setTypeface(commonTF);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        appTitle.setTypeface(commonTF);
+        signUpBtn.setTypeface(commonTF);
+        logInHint.setTypeface(commonTF);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
-        if (user != null) {
-            Intent i = new Intent(LandingActivity.this, DashboardActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-        }
-        findViewById(R.id.signUpHint).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.logInHint).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                startActivity(new Intent(LandingActivity.this, SignupActivity.class));
+                startActivity(new Intent(SignupActivity.this, LandingActivity.class));
             }
         });
-        logInBtn.setOnClickListener(new View.OnClickListener() {
+
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(TextUtils.isEmpty(emailEditText.getText().toString()) || TextUtils.isEmpty(passwordEditText.getText().toString())){
+                final String email = emailEditText.getText().toString().trim();
+                String pass = passwordEditText.getText().toString().trim();
+                final String firstName = firstNameEditText.getText().toString().trim();
+                final String lastName = lastNameEditText.getText().toString().trim();;
+                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName)) {
                     showNoEmailToast();
                 }
                 else {
                     showProgressDialog();
-                    String email = emailEditText.getText().toString().trim();
-                    String pass = passwordEditText.getText().toString().trim();
-                    firebaseAuth.signInWithEmailAndPassword(email, pass)
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()) {
+                                        Object signUpTime= ServerValue.TIMESTAMP;
+                                        User user = new User("", firstName, lastName, email, signUpTime,"");
+                                        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                                        databaseReference.child(firebaseUser.getUid()).setValue(user);
+                                        databaseReference.child(firebaseUser.getUid()).child("connections").setValue(0);
+                                        databaseReference.child(firebaseUser.getUid()).child("connections_alert").setValue(0);
+                                        databaseReference.child(firebaseUser.getUid()).child("notifications").child("connection_requests").setValue("");
+                                        databaseReference.child(firebaseUser.getUid()).child("notifications").child("notif_clicked").setValue(1);
+                                        databaseReference.child(firebaseUser.getUid()).child("profile_photo").child("encodedSchemeSpecificPart").setValue("");
                                         dismissProgressDialog();
-                                        startActivity(new Intent(LandingActivity.this, DashboardActivity.class));
+                                        startActivity(new Intent(SignupActivity.this, DashboardActivity.class));
                                         finish();
                                     }
-                                    else if(task.getException() instanceof FirebaseAuthInvalidUserException) {
+                                    else if(task.getException() instanceof FirebaseAuthUserCollisionException) {
                                         dismissProgressDialog();
-                                        View layoutVal = LayoutInflater.from(LandingActivity.this).inflate(R.layout.login_not_valid, null);
+                                        View layoutVal = LayoutInflater.from(SignupActivity.this).inflate(R.layout.signup_custom_toast, null);
                                         Toast toast = new Toast(getApplicationContext());
                                         toast.setDuration(Toast.LENGTH_LONG);
                                         toast.setGravity(Gravity.BOTTOM, 0, 0);
@@ -95,7 +109,7 @@ public class LandingActivity extends AppCompatActivity {
                                     }
                                     else {
                                         dismissProgressDialog();
-                                        View layoutVal = LayoutInflater.from(LandingActivity.this).inflate(R.layout.incorrect_details_toast, null);
+                                        View layoutVal = LayoutInflater.from(SignupActivity.this).inflate(R.layout.some_prob_toast, null);
                                         Toast toast = new Toast(getApplicationContext());
                                         toast.setDuration(Toast.LENGTH_LONG);
                                         toast.setGravity(Gravity.BOTTOM, 0, 0);
@@ -108,10 +122,22 @@ public class LandingActivity extends AppCompatActivity {
             }
         });
     }
+    public void showProgressDialog() {
+        progressDialog = new ProgressDialog(SignupActivity.this);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+    }
+
+    public void dismissProgressDialog() {
+        progressDialog.dismiss();
+    }
+
     private void showNoEmailToast() {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View dialogLayout = inflater.inflate(R.layout.empty_email_toast, null);
+        final View dialogLayout = inflater.inflate(R.layout.empty_details_toast, null);
 
         final android.app.AlertDialog dialog = builder.create();
         dialog.getWindow().setSoftInputMode(
@@ -123,22 +149,12 @@ public class LandingActivity extends AppCompatActivity {
         wlmp.gravity = Gravity.BOTTOM;
         builder.setView(dialogLayout);
         dialog.show();
+
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 dialog.dismiss();
             }
         },2000);
-    }
-    public void showProgressDialog() {
-        progressDialog = new ProgressDialog(LandingActivity.this);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setCancelable(false);
-        progressDialog.setMessage("Please Wait...");
-        progressDialog.show();
-    }
-
-    public void dismissProgressDialog() {
-        progressDialog.dismiss();
     }
 }
