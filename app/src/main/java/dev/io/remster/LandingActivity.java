@@ -53,6 +53,7 @@ public class LandingActivity extends AppCompatActivity {
         logInTrouble.setTypeface(commonTF);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAuth = FirebaseAuth.getInstance();
+
         if (user != null) {
             Intent i = new Intent(LandingActivity.this, DashboardActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -61,8 +62,11 @@ public class LandingActivity extends AppCompatActivity {
         findViewById(R.id.signUpHint).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+//                finish();
                 startActivity(new Intent(LandingActivity.this, SignupActivity.class));
+                overridePendingTransition(R.anim.enter, R.anim.exit);
+                finish();
+
             }
         });
         logInBtn.setOnClickListener(new View.OnClickListener() {

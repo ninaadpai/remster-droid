@@ -10,8 +10,8 @@
         android:id="@+id/custom_toast_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="There seems to be some issue, please try again."
-        android:textColor="@android:color/white"
+        android:text="Cannot detect your location."
+        android:textColor="@android:color/black"
         android:textSize="11sp"/>
 
 </LinearLayout>

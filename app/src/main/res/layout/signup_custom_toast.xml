@@ -12,6 +12,6 @@
         android:layout_height="wrap_content"
         android:text="User already exists, please Log In"
         android:textColor="@android:color/black"
-        android:textSize="12sp"/>
+        android:textSize="11sp"/>
 
 </LinearLayout>

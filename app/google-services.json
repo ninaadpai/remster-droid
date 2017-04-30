@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "65481784526",
-    "firebase_url": "https://remster-18098.firebaseio.com",
-    "project_id": "remster-18098",
-    "storage_bucket": "remster-18098.appspot.com"
+    "project_number": "199222024063",
+    "firebase_url": "https://remster-e71bf.firebaseio.com",
+    "project_id": "remster-e71bf",
+    "storage_bucket": "remster-e71bf.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:65481784526:android:831e9b5465e93306",
+        "mobilesdk_app_id": "1:199222024063:android:831e9b5465e93306",
         "android_client_info": {
           "package_name": "dev.io.remster"
         }
       },
       "oauth_client": [
         {
-          "client_id": "65481784526-qugr7gig6hvoh4qng494qmhfjfsm9a3n.apps.googleusercontent.com",
+          "client_id": "199222024063-gptqfeofa3ffqqmdj3c2cpc1q7g3u2fm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "dev.io.remster",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "65481784526-t567vbg5ss1rluq4oh1l95d5mf5d4je7.apps.googleusercontent.com",
+          "client_id": "199222024063-r74n1ae61ga7aeflupi2ljsbthd355n5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCMw_Jc0isBX5eOmE4yStjbuqyi4h1Wsbo"
+          "current_key": "AIzaSyA4XVug8vATFE0NS-vQ-M5gFiquIEtXXI4"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "65481784526-t567vbg5ss1rluq4oh1l95d5mf5d4je7.apps.googleusercontent.com",
+              "client_id": "199222024063-r74n1ae61ga7aeflupi2ljsbthd355n5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

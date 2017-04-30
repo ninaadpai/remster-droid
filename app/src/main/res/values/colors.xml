@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="landingBackground">#FFFFFF</color>
     <color name="appColor">#47DDDE</color>
+    <color name="dashboardBackground">#FCFCFC</color>
 </resources>
