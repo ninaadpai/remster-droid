@@ -5,10 +5,27 @@
     android:background="@color/dashboardBackground"
     tools:context="dev.io.remster.DashFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/radiusTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="9sp"
+        android:layout_marginLeft="5dp"
+        android:textColor="#797979"
+        android:text="Show Posts Within:" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/radiusRecycler"
+        android:layout_below="@+id/radiusTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <ListView
         android:id="@+id/dashboardRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/radiusRecycler" />
 </RelativeLayout>

@@ -42,12 +42,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:ems="15"
-        android:inputType="textEmailAddress"
+        android:inputType="textEmailAddress|textNoSuggestions"
         android:background="@drawable/landing_edittext_background"
         android:hint="@string/email_hint"
         android:textColor="@android:color/black"
-        android:textColorHint="#aaa"
-        android:textSize="10sp"/>
+        android:textColorHint="#969696"
+        android:textSize="11sp"/>
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -55,15 +55,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="15"
-        android:inputType="textPassword"
+        android:inputType="textPassword|textNoSuggestions"
         android:layout_below="@+id/emailEditText"
         android:layout_alignLeft="@+id/emailEditText"
         android:background="@drawable/landing_edittext_background"
         android:layout_alignStart="@+id/emailEditText"
         android:hint="@string/password_hint"
         android:textColor="@android:color/black"
-        android:textColorHint="#aaa"
-        android:textSize="10sp"/>
+        android:textColorHint="#969696"
+        android:textSize="11sp"/>
 
     <Button
         android:id="@+id/logInBtn"
@@ -72,8 +72,9 @@
         android:layout_below="@+id/passwordEditText"
         android:text="@string/log_in"
         android:layout_marginTop="10dp"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:height="10dp"
+        android:textColor="@android:color/white"
         android:background="@drawable/login_button_background"
         android:layout_alignLeft="@+id/passwordEditText"
         android:layout_alignStart="@+id/passwordEditText"
@@ -87,7 +88,7 @@
         android:layout_below="@+id/logInBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:textStyle="normal|bold"
         android:textColor="@color/colorPrimary"
         android:text="@string/log_in_trouble" />
@@ -99,8 +100,74 @@
         android:layout_below="@+id/logInTrouble"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="10sp"
+        android:textSize="11sp"
         android:textStyle="normal|bold"
         android:textColor="@color/colorPrimary"
         android:text="@string/sign_up_hint" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="80dp"
+        app:srcCompat="@drawable/explore_city"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/signUpHint"
+        android:layout_toStartOf="@+id/signUpHint"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/map"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/photo"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_toRightOf="@+id/appTitle"
+        android:layout_toEndOf="@+id/appTitle" />
+
+    <TextView
+        android:id="@+id/exploreLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="10sp"
+        android:text="EXPLORE"
+        android:layout_below="@+id/imageView4"
+        android:layout_toLeftOf="@+id/logInBtn"
+        android:layout_toStartOf="@+id/logInBtn" />
+
+    <TextView
+        android:id="@+id/locateLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="10sp"
+        android:text="LOCATE" />
+
+    <TextView
+        android:id="@+id/photoLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="10sp"
+        android:text="CLICK"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_below="@+id/imageView5"
+        android:layout_toRightOf="@+id/logInBtn"
+        android:layout_toEndOf="@+id/logInBtn" />
+
 </RelativeLayout>

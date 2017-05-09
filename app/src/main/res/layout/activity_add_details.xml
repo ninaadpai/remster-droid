@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="dev.io.remster.AddDetailsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/postTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageThumbnail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="7dp"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:text="NEW POST" />
+
+    <ImageView
+        android:id="@+id/uploadPost"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignEnd="@+id/charCount"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/charCount"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/upload_button_background"
+        app:srcCompat="@drawable/ic_done_white_36dp" />
+
+    <ImageView
+        android:id="@+id/imageThumbnail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/uploadPost"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/image_thumbnail_background"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <EditText
+        android:id="@+id/imageDescEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageThumbnail"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageThumbnail"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/imageThumbnail"
+        android:background="@drawable/image_desc_edittext_background"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:enabled="true"
+        android:gravity="top|left"
+        android:hint="Add some description for people to see..."
+        android:inputType="textCapSentences|textMultiLine|textNoSuggestions"
+        android:scrollbars="vertical"
+        android:textColor="@android:color/black"
+        android:textColorHint="#969696"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/charCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageDescEditText"
+        android:layout_alignRight="@+id/imageDescEditText"
+        android:layout_below="@+id/imageDescEditText"
+        android:textSize="11sp"
+        android:textColor="#000"/>
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/landing_edittext_background"
+        android:hint="Add a location..."
+        android:inputType="textCapWords|textNoSuggestions"
+        android:textColor="@android:color/black"
+        android:textColorHint="#969696"
+        android:textSize="11sp"
+        android:layout_below="@+id/charCount"
+        android:layout_alignRight="@+id/charCount"
+        android:layout_alignEnd="@+id/charCount"
+        android:layout_alignLeft="@+id/imageThumbnail"
+        android:layout_alignStart="@+id/imageThumbnail" />
+
+    <ImageView
+        android:id="@+id/clearSearchImageUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/searchEditText"
+        android:layout_alignRight="@+id/searchEditText"
+        android:layout_below="@+id/charCount"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="7dp"
+        app:srcCompat="@drawable/ic_close_black_18dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/placesRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/postCategory"
+        android:layout_alignRight="@+id/searchEditText"
+        android:layout_alignEnd="@+id/searchEditText"
+        android:layout_alignLeft="@+id/searchEditText"
+        android:layout_alignStart="@+id/searchEditText" />
+
+    <EditText
+        android:id="@+id/postCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:background="@drawable/landing_edittext_background"
+        android:hint="Add a topic..."
+        android:inputType="textCapWords|textNoSuggestions"
+        android:textColor="@android:color/black"
+        android:textColorHint="#969696"
+        android:textSize="11sp"
+        android:layout_below="@+id/searchEditText"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/searchEditText"
+        android:layout_alignStart="@+id/searchEditText"
+        android:layout_alignRight="@+id/clearSearchImageUpload"
+        android:layout_alignEnd="@+id/clearSearchImageUpload" />
+
+    <TextView
+        android:id="@+id/locationWarning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="All posts are anonymous. Location is required to show activities in the area."
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="11sp"
+        android:layout_below="@+id/placesRecycler"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/cancelPost"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/upload_button_background"
+        android:layout_alignLeft="@+id/imageThumbnail"
+        android:layout_alignStart="@+id/imageThumbnail"
+        android:layout_alignTop="@+id/uploadPost"
+        app:srcCompat="@drawable/quantum_ic_clear_white_24" />
+
+    <ImageView
+        android:id="@+id/clearSearchTopic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_close_black_18dp"
+        android:layout_alignTop="@+id/postCategory"
+        android:layout_alignRight="@+id/postCategory"
+        android:layout_alignEnd="@+id/postCategory"
+        android:layout_marginTop="7dp" />
+
+</RelativeLayout>

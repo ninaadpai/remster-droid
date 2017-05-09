@@ -10,7 +10,7 @@
         android:id="@+id/custom_toast_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please choose your home location."
+        android:text="You can set home location in Settings"
         android:textColor="@android:color/black"
         android:textSize="11sp"/>
 

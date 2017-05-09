@@ -52,17 +52,11 @@ public class PlacesAutoCompleteAdapter
         mcommonTF = commonTF;
     }
 
-    /**
-     * Sets the bounds for all subsequent queries.
-     */
-    public void setBounds(LatLngBounds bounds) {
+     public void setBounds(LatLngBounds bounds) {
         mBounds = bounds;
     }
 
-    /**
-     * Returns the filter for the current set of autocomplete results.
-     */
-    @Override
+     @Override
     public Filter getFilter() {
         Filter filter = new Filter() {
             @Override

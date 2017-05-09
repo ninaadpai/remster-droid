@@ -1,9 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="dev.io.remster.CameraActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/cancelCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/ic_close_black_18dp" />
+
+    <TextView
+        android:id="@+id/photoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:text="PHOTO"
+        android:layout_alignTop="@+id/cancelCamera"
+        android:layout_centerHorizontal="true" />
+
+    <SurfaceView
+        android:id="@+id/cameraPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/takePhoto"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@+id/cancelCamera" />
+
+    <Button
+        android:id="@+id/takePhoto"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/editPhoto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:height="10dp"
+        android:background="@drawable/btn_take_photo" />
+
+    <ImageView
+        android:id="@+id/imageGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        app:srcCompat="@drawable/ic_camera_roll_white_18dp"
+        android:layout_alignTop="@+id/flipCamera"
+        android:layout_alignLeft="@+id/cancelCamera"
+        android:layout_alignStart="@+id/cancelCamera" />
+
+    <ImageView
+        android:id="@+id/flipCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        app:srcCompat="@drawable/ic_switch_camera_white_18dp"
+        android:layout_alignBottom="@+id/cameraPreview"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="7dp" />
+
+    <TextView
+        android:id="@+id/confirmPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="11sp"
+        android:text="PROCEED"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/flipCamera"
+        android:layout_alignEnd="@+id/flipCamera" />
+
+    <TextView
+        android:id="@+id/retakePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageGallery"
+        android:layout_alignStart="@+id/imageGallery"
+        android:layout_alignTop="@+id/confirmPhoto"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="11sp"
+        android:text="RETAKE" />
+
+    <TextView
+        android:id="@+id/editPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="11sp"
+        android:text="EDIT"
+        android:layout_alignBottom="@+id/confirmPhoto"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

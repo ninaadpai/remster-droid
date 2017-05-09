@@ -28,10 +28,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LandingActivity extends AppCompatActivity {
-    TextView appTitle,signUpHint, logInTrouble;
+    TextView appTitle,signUpHint, logInTrouble, exploreLink, locateLink, photoLink;
     EditText emailEditText, passwordEditText;
     Button logInBtn;
-    Typeface commonTF;
+    Typeface commonTF,commonTFSemiBold;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
     @Override
@@ -43,7 +43,8 @@ public class LandingActivity extends AppCompatActivity {
         signUpHint = (TextView)findViewById(R.id.signUpHint);
         emailEditText = (EditText)findViewById(R.id.emailEditText);
         passwordEditText = (EditText)findViewById(R.id.passwordEditText);
-        commonTF = Typeface.createFromAsset(getAssets(),"fonts/Nunito-Regular.ttf");
+        commonTF = Typeface.createFromAsset(getAssets(),"fonts/Arimo-Regular.ttf");
+        commonTFSemiBold = Typeface.createFromAsset(getAssets(),"fonts/Arimo-Bold.ttf");
         logInBtn = (Button)findViewById(R.id.logInBtn);
         appTitle.setTypeface(commonTF);
         signUpHint.setTypeface(commonTF);
@@ -51,6 +52,12 @@ public class LandingActivity extends AppCompatActivity {
         passwordEditText.setTypeface(commonTF);
         logInBtn.setTypeface(commonTF);
         logInTrouble.setTypeface(commonTF);
+        exploreLink = (TextView)findViewById(R.id.exploreLink);
+        locateLink = (TextView)findViewById(R.id.locateLink);
+        photoLink = (TextView)findViewById(R.id.photoLink);
+        exploreLink.setTypeface(commonTFSemiBold);
+        locateLink.setTypeface(commonTFSemiBold);
+        photoLink.setTypeface(commonTFSemiBold);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAuth = FirebaseAuth.getInstance();
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_alert_background">
+
+    <ImageView
+        android:id="@+id/cancelLocation"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/upload_button_background"
+        android:layout_alignBottom="@+id/setLocation"
+        app:srcCompat="@drawable/quantum_ic_clear_white_24"
+        android:layout_above="@+id/locationSuggestion"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/locationString"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:text="SET YOUR HOME"
+        android:layout_alignTop="@+id/setLocation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/setLocation"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/upload_button_background"
+        app:srcCompat="@drawable/ic_done_white_36dp" />
+
+    <EditText
+        android:id="@+id/locationSuggestion"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:ems="10"
+        android:layout_below="@id/locationString"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="11sp"
+        android:textColor="@android:color/black"
+        android:textColorHint="#aaa"
+        android:hint="Search a city or enter your address..."
+        android:inputType="textCapWords|textNoSuggestions"
+        android:background="@drawable/landing_edittext_background"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/clearSearch"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:srcCompat="@drawable/ic_clear_black_24dp"
+        android:layout_alignTop="@+id/locationSuggestion"
+        android:layout_marginTop="6dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/placesRecycler"
+        android:layout_below="@+id/locationSuggestion"
+        android:layout_marginBottom="5dp"/>
+
+</RelativeLayout>

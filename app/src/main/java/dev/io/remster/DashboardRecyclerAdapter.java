@@ -37,7 +37,7 @@ class DashboardRecyclerAdapter extends ArrayAdapter<City> {
         }
         City i = mData.get(position);
         TextView title = (TextView)convertView.findViewById(R.id.cityName);
-        TextView description = (TextView)convertView.findViewById(R.id.description);
+        TextView description = (TextView)convertView.findViewById(R.id.moreDetails);
         title.setTypeface(DashboardActivity.commonTFSemiBold);
         description.setTypeface(DashboardActivity.commonTF);
         title.setText(i.getCityName().substring(0,1).toUpperCase()+i.getCityName().substring(1,i.getCityName().length()));

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_alert_background">
+
+    <TextView
+        android:id="@+id/homeLocationText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="11sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:text="Set your home city to get local updates." />
+
+    <Button
+        android:id="@+id/notNowBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:text="NOT NOW"
+        android:background="@drawable/login_button_background"
+        android:layout_below="@+id/homeLocationText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="11sp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/settingsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/notNowBtn"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:textSize="11sp"
+        android:background="@drawable/login_button_background"
+        android:layout_toEndOf="@+id/notNowBtn"
+        android:layout_toRightOf="@+id/notNowBtn"
+        android:text="SETTINGS" />
+
+    <CheckBox
+        android:id="@+id/neverAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/notNowBtn"
+        android:layout_alignStart="@+id/notNowBtn"
+        android:layout_below="@+id/notNowBtn"
+        android:text="Never show this again."
+        android:buttonTint="@android:color/black"
+        android:textColor="@android:color/black"
+        android:textSize="11sp" />
+
+</RelativeLayout>

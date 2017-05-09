@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,10 +6,50 @@
     tools:context="dev.io.remster.ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:text="TextView" />
+
+
+    <TextView
+        android:id="@+id/noPostsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:textSize="11sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:text="@string/no_posts_string"
+        android:layout_below="@+id/addInfo"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/postButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="11sp"
+        android:background="@drawable/login_button_background"
+        android:text="POST SOMETHING"
+        android:layout_below="@+id/noPostsText"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:id="@+id/profilePostRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textColor="@android:color/black"
-        android:text="Profile" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/postButton" />
 
-</FrameLayout>
+</RelativeLayout>

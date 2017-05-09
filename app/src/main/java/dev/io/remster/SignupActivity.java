@@ -31,10 +31,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SignupActivity extends AppCompatActivity {
-    TextView appTitle, logInHint;
+    TextView appTitle, logInHint, exploreLink, locateLink, photoLink;;
     EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText;
     Button signUpBtn;
-    Typeface commonTF;
+    Typeface commonTF,commonTFSemiBold;
     ProgressDialog progressDialog;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
@@ -44,11 +44,19 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         appTitle = (TextView)findViewById(R.id.appTitle);
         logInHint = (TextView)findViewById(R.id.logInHint);
-        commonTF = Typeface.createFromAsset(getAssets(),"fonts/Nunito-Regular.ttf");
+        commonTF = Typeface.createFromAsset(getAssets(),"fonts/Arimo-Regular.ttf");
+        commonTFSemiBold = Typeface.createFromAsset(getAssets(),"fonts/Arimo-Bold.ttf");
+
         firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
         lastNameEditText = (EditText) findViewById(R.id.lastNameEditText);
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        exploreLink = (TextView)findViewById(R.id.exploreLink);
+        locateLink = (TextView)findViewById(R.id.locateLink);
+        photoLink = (TextView)findViewById(R.id.photoLink);
+        exploreLink.setTypeface(commonTFSemiBold);
+        locateLink.setTypeface(commonTFSemiBold);
+        photoLink.setTypeface(commonTFSemiBold);
         signUpBtn = (Button)findViewById(R.id.signUpBtn);
         firstNameEditText.setTypeface(commonTF);
         lastNameEditText.setTypeface(commonTF);
@@ -89,12 +97,12 @@ public class SignupActivity extends AppCompatActivity {
                                         Object signUpTime= ServerValue.TIMESTAMP;
                                         User user = new User("", firstName, lastName, email, signUpTime,"");
                                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                                        databaseReference.child(firebaseUser.getUid()).setValue(user);
-                                        databaseReference.child(firebaseUser.getUid()).child("connections").setValue(0);
-                                        databaseReference.child(firebaseUser.getUid()).child("connections_alert").setValue(0);
-                                        databaseReference.child(firebaseUser.getUid()).child("notifications").child("connection_requests").setValue("");
-                                        databaseReference.child(firebaseUser.getUid()).child("notifications").child("notif_clicked").setValue(1);
-                                        databaseReference.child(firebaseUser.getUid()).child("profile_photo").child("encodedSchemeSpecificPart").setValue("");
+                                        databaseReference.child("users").child(firebaseUser.getUid()).setValue(user);
+                                        databaseReference.child("users").child(firebaseUser.getUid()).child("connections").setValue(0);
+                                        databaseReference.child("users").child(firebaseUser.getUid()).child("connections_alert").setValue(0);
+                                        databaseReference.child("users").child(firebaseUser.getUid()).child("notifications").child("connection_requests").setValue("");
+                                        databaseReference.child("users").child(firebaseUser.getUid()).child("notifications").child("notif_clicked").setValue(1);
+                                        databaseReference.child("users").child(firebaseUser.getUid()).child("profile_photo").child("encodedSchemeSpecificPart").setValue("");
                                         dismissProgressDialog();
                                         startActivity(new Intent(SignupActivity.this, DashboardActivity.class));
                                         finish();

@@ -21,7 +21,6 @@
 
     </android.support.v7.widget.Toolbar>
 
-
     <ImageView
         android:id="@+id/backBtn"
         android:layout_width="wrap_content"
@@ -72,8 +71,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
-                android:textSize="12sp"
-                android:text="Ninaad Pai" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/emailText"
@@ -82,8 +80,7 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="5dp"
-                android:textSize="12sp"
-                android:text="ninaadpai@gmail.com" />
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/passwordText"
                 android:layout_width="wrap_content"
@@ -118,13 +115,13 @@
 
 
             <TextView
-                android:id="@+id/userLocation"
+                android:id="@+id/homeLocation"
                 android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textSize="12sp"
-                android:text="Your City" />
+                android:text="Home Location" />
 
             <TextView
                 android:id="@+id/changeProfilePhoto"
@@ -136,16 +133,26 @@
                 android:layout_marginLeft="5dp"
                 android:text="@string/change_profile_photo" />
 
+            <ImageView
+                android:id="@+id/profilePhoto"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="5dp"
+                app:srcCompat="@mipmap/ic_launcher" />
+
             <TextView
                 android:id="@+id/logOutText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/holo_red_light"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="75dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"
                 android:textSize="12sp"
                 android:text="@string/log_out" />
+
         </android.support.v7.widget.CardView>
 
     </RelativeLayout>
